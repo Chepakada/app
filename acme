@@ -1,0 +1,69 @@
+# import requests
+# from bs4 import BeautifulSoup
+
+# # Login credentials
+# username = 'your_username'
+# password = 'your_password'
+
+# # Login URL
+# login_url = 'http://portal.acmd.com/Account/Login?ReturnUrl=%2f'
+
+# # Create a session
+# session = requests.Session()
+
+# # Submit login credentials
+# login_data = {
+#     'username': username,
+#     'password': password
+# }
+
+# # Send POST request to login
+# login_response = session.post(login_url, data=login_data)
+
+# # Check if login was successful
+# if login_response.status_code == 200:
+#     # Now authenticated, you can access restricted pages
+#     # For example, let's scrape data from a restricted page
+#     restricted_url = 'http://portal.acmd.com/Account/Login?ReturnUrl=%2f'
+#     restricted_response = session.get(restricted_url)
+    
+#     # Parse HTML content of the restricted page
+#     soup = BeautifulSoup(restricted_response.content, 'html.parser')
+    
+#     # Extract desired data
+#     # Example: find all <p> tags on the page
+#     paragraphs = soup.find_all('p')
+    
+#     # Handle extracted data
+#     for paragraph in paragraphs:
+#         print(paragraph.text)
+# else:
+#     print("Login failed. Status code:", login_response.status_code)
+
+import requests
+from bs4 import BeautifulSoup
+
+# Your Facebook credentials
+username = 'your_username'
+password = 'your_password'
+
+# Start a session
+session = requests.Session()
+
+# Simulate login
+login_url = 'https://www.facebook.com/login.php'
+login_data = {'email': username, 'pass': password}
+response = session.post(login_url, data=login_data)
+
+# Check if login was successful
+if response.status_code != 200:
+    print("Login failed!")
+    exit()
+
+# Now you can make requests as an authenticated user
+# For example, fetch your profile page
+profile_url = 'https://www.facebook.com/profile.php'
+profile_response = session.get(profile_url)
+
+# Print the profile page content
+print(profile_response.text)
