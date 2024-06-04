@@ -9,7 +9,7 @@ import io
 import plotly.graph_objects as go
 
 # Title of the app
-st.title("Stand Ops Report Generator")
+st.title("Standard Ops Report Generator")
 
 # File uploader
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
